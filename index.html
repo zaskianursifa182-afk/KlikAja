@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KLIK AJA — Semua Jasa, Tinggal Klik Aja!</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+<style>
+:root{--navy:#172B4D;--dnavy:#10213A;--soft:#EAF1F8;--muted:#7895B2;--warm:#FAFAF8;--gray:#F3F5F7;--teal:#4E9C91;--gold:#D6AD65;--tx:#202B38;--tx2:#77818D;--r:16px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:15px/1.6 Inter,sans-serif;color:var(--tx);background:var(--warm);overflow-x:hidden}
+h1,h2,h3,h4,.logo{font-family:Manrope,sans-serif;color:var(--navy);line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800}h2{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800}h3{font-size:1.05rem;font-weight:700}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}.sec{padding:56px 0}
+.hd{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:24px;flex-wrap:wrap}.hd p{color:var(--tx2)}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid #e6eaef}
+.nav{display:flex;align-items:center;gap:20px;height:64px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.15rem;letter-spacing:.02em;cursor:pointer}
+.menu{display:flex;gap:4px;margin-left:auto;align-items:center}
+.menu a,.menu button.lnk{padding:8px 12px;border-radius:10px;color:var(--tx);font-weight:500;background:none;border:0;cursor:pointer}
+.menu a:hover,.menu a.on{background:var(--soft);color:var(--navy)}
+.burger{display:none;margin-left:auto;background:none;border:0;cursor:pointer;color:var(--navy)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:12px;border:1.5px solid transparent;font-weight:600;cursor:pointer;transition:.2s;background:var(--teal);color:#fff}
+.btn:hover{filter:brightness(.92);transform:translateY(-1px)}
+.btn.navy{background:var(--navy)}.btn.out{background:#fff;color:var(--navy);border-color:#d5dde6}.btn.sm{padding:6px 12px;font-size:.85rem}.btn.red{background:#fff;color:#b4474a;border-color:#e8c5c6}
+.hero{background:linear-gradient(180deg,var(--soft),var(--warm));padding:64px 0 48px}
+.hero .in{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.hero p.lead{font-size:1.1rem;color:var(--tx2);margin:16px 0 24px;max-width:520px}
+.sbar{display:flex;gap:8px;background:#fff;padding:8px;border-radius:16px;box-shadow:0 8px 30px rgba(23,43,77,.1)}
+.sbar input{flex:1;min-width:0;border:0;padding:8px 12px;outline:0;background:none}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.chip{padding:6px 14px;border-radius:99px;background:#fff;border:1px solid #d5dde6;cursor:pointer;font-size:.88rem;color:var(--navy)}
+.chip:hover{border-color:var(--teal);color:var(--teal)}
+.hv{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hv div{border-radius:20px;padding:22px;color:#fff;min-height:120px;display:flex;flex-direction:column;justify-content:space-between;font-family:Manrope;font-weight:700}
+.hv div:nth-child(1){background:var(--navy);grid-row:span 2}.hv div:nth-child(2){background:var(--teal)}.hv div:nth-child(3){background:var(--muted)}
+.hv svg{width:36px;height:36px}
+.grid{display:grid;gap:18px}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:#fff;border-radius:var(--r);box-shadow:0 2px 14px rgba(23,43,77,.07);overflow:hidden;transition:.25s}
+.card:hover{box-shadow:0 10px 28px rgba(23,43,77,.13);transform:translateY(-3px)}
+.cat{padding:20px;cursor:pointer;display:flex;flex-direction:column;gap:8px}
+.ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff}
+.cat p,.sm{color:var(--tx2);font-size:.88rem}
+.thumb{height:130px;display:grid;place-items:center;color:#fff;position:relative}
+.thumb svg{width:46px;height:46px;opacity:.95}
+.fav{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:#fff;color:var(--tx2);cursor:pointer;display:grid;place-items:center}
+.fav.on{color:#c9484b}.fav.on svg{fill:#c9484b}
+.fav svg{width:18px;height:18px}
+.body{padding:16px;display:flex;flex-direction:column;gap:6px}
+.badge{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:600;background:var(--soft);color:var(--navy);width:fit-content}
+.st0{background:#FBF1DC;color:#8a6420}.st1{background:#E1F0ED;color:#2f6f66}.st2{background:#E3ECF6;color:#2c4f77}.st3{background:#DDF1DF;color:#2b6a35}.st4{background:#F7E1E1;color:#a03d40}
+.meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--tx2);font-size:.85rem;align-items:center}
+.meta svg,.star svg{width:14px;height:14px;vertical-align:-2px}.star{color:#a8812f;font-weight:600}.star svg{fill:var(--gold);stroke:var(--gold)}
+.price{font-family:Manrope;font-weight:800;color:var(--navy)}
+.prov{padding:18px;display:flex;gap:14px}.av{width:48px;height:48px;border-radius:14px;background:var(--soft);color:var(--navy);display:grid;place-items:center;font:800 1.1rem Manrope;flex:none}
+.step{padding:24px}.step .n{width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700;margin-bottom:12px}
+.cta{background:var(--navy);color:#fff;border-radius:24px;padding:44px;text-align:center}.cta h2{color:#fff}.cta p{color:#c7d3e2;margin:10px 0 20px}
+footer{background:var(--dnavy);color:#b8c4d4;padding:48px 0 24px;margin-top:40px}
+footer .grid{grid-template-columns:2fr 1fr 1fr 1fr}footer h4{color:#fff;margin-bottom:10px}footer a{display:block;padding:3px 0;cursor:pointer}footer a:hover{color:#fff}
+.copy{border-top:1px solid #243b5a;margin-top:28px;padding-top:16px;font-size:.85rem}
+.note{background:#FBF4E4;border:1px solid #ecd9ae;color:#6b5320;padding:10px 14px;border-radius:12px;font-size:.85rem;margin-bottom:18px}
+.filters{background:#fff;padding:16px;border-radius:var(--r);display:grid;grid-template-columns:2fr repeat(5,1fr);gap:10px;margin-bottom:20px;box-shadow:0 2px 14px rgba(23,43,77,.07)}
+label{font-weight:600;font-size:.85rem;display:block;margin-bottom:4px;color:var(--navy)}
+input,select,textarea{width:100%;padding:10px 12px;border:1.5px solid #d5dde6;border-radius:10px;background:#fff;color:var(--tx)}
+input:focus,select:focus,textarea:focus{border-color:var(--teal);outline:0}
+.form{display:grid;gap:14px}.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.err{color:#b4474a;font-size:.82rem;min-height:1em}
+.box{background:#fff;border-radius:var(--r);padding:24px;box-shadow:0 2px 14px rgba(23,43,77,.07)}
+.det{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start}
+.rv{padding:12px 0;border-top:1px solid #eef1f4}
+.ov{position:fixed;inset:0;background:rgba(16,33,58,.55);z-index:100;display:grid;place-items:center;padding:16px;overflow:auto}
+.md{background:#fff;border-radius:20px;padding:26px;width:100%;max-width:520px;max-height:92vh;overflow:auto;animation:pop .2s}
+@keyframes pop{from{transform:scale(.96);opacity:0}}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px;border-bottom:1px solid #eef1f4;font-size:.9rem;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}.stats b{font:800 1.8rem Manrope;color:var(--navy);display:block}
+.empty{text-align:center;padding:48px 16px;color:var(--tx2)}
+#toasts{position:fixed;right:16px;bottom:16px;z-index:200;display:grid;gap:8px}
+.toast{background:var(--navy);color:#fff;padding:12px 16px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.2);max-width:320px;animation:pop .2s}.toast.bad{background:#a03d40}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}.hero .in,.det{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.filters>div:first-child{grid-column:1/-1}footer .grid{grid-template-columns:1fr 1fr}
+.burger{display:block}.menu{display:none;position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:12px 20px;border-bottom:1px solid #e6eaef}.menu.open{display:flex}}
+@media(max-width:560px){.g4,.g3,.f2,.stats{grid-template-columns:1fr}.cta{padding:28px 18px}.sec{padding:40px 0}.sbar{flex-wrap:wrap}.sbar .btn{width:100%}.hv{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#beranda" aria-label="KLIK AJA"><svg width="34" height="34" viewBox="0 0 34 34"><rect width="34" height="34" rx="10" fill="#172B4D"/><path d="M11 8l13 7.5-5.5 1.8-2 5.7z" fill="#4E9C91"/><circle cx="24" cy="24" r="3" fill="#D6AD65"/></svg>KLIK AJA</a>
+<nav class="menu" id="menu"></nav>
+<button class="burger" onclick="$('#menu').classList.toggle('open')" aria-label="Menu"><i data-lucide="menu"></i></button>
+</div></header>
+<main id="app"></main>
+<footer><div class="wrap"><div class="grid">
+<div><div class="logo" style="color:#fff;margin-bottom:10px">KLIK AJA</div><p>Semua Jasa, Tinggal Klik Aja! Marketplace jasa profesional di Purwakarta dan sekitarnya.</p></div>
+<div><h4>Navigasi</h4><a href="#beranda">Beranda</a><a href="#jelajahi">Jelajahi Jasa</a><a href="#tentang">Tentang Kami</a><a href="#mitra">Jadi Mitra</a></div>
+<div><h4>Kategori</h4><div id="fcat"></div></div>
+<div><h4>Kontak</h4><a>halo@klikaja.example</a><a>Purwakarta, Jawa Barat</a><a>@klikaja.id (contoh)</a></div>
+</div><div class="copy">© 2026 KLIK AJA. Data perusahaan dan ulasan adalah simulasi, bukan bisnis terverifikasi.</div></div></footer>
+<div id="toasts" aria-live="polite"></div>
+<script>
+const $=s=>document.querySelector(s);
+const rp=n=>'Rp '+Number(n).toLocaleString('id-ID');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ls={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const ic=(n,s)=>`<i data-lucide="${n}"${s?` style="${s}"`:''}></i>`;
+/* ===== DATA (simulasi) ===== */
+const CATS=[
+{id:'rumah',n:'Layanan Rumah',i:'home',c:'#4E9C91',d:'Cleaning, servis AC, listrik, plumbing, furnitur'},
+{id:'kecantikan',n:'Kecantikan',i:'sparkles',c:'#B07A9A',d:'MUA, hairdo, nail art, personal stylist'},
+{id:'katering',n:'Katering & Kuliner',i:'utensils',c:'#C98A4B',d:'Katering acara, pernikahan, snack box, private chef'},
+{id:'edukasi',n:'Pendidikan',i:'graduation-cap',c:'#5B7FB5',d:'Guru privat, les bahasa, les musik, bimbel'},
+{id:'otomotif',n:'Otomotif',i:'car',c:'#6B7A8C',d:'Servis mobil dan motor, detailing, cuci kendaraan'},
+{id:'kreatif',n:'Kreatif',i:'camera',c:'#7A6BB0',d:'Fotografi, videografi, desain grafis, dokumentasi'}];
+const CO=[
+{id:1,n:'Bersih Rumah Purwakarta',cat:'rumah',loc:'Purwakarta',r:4.8,rv:126,d:'Tim kebersihan rumah dan kantor yang rapi dan tepat waktu.'},
+{id:2,n:'Sigap Teknik Plered',cat:'rumah',loc:'Plered',r:4.6,rv:84,d:'Servis AC, listrik, dan plumbing untuk rumah tangga.'},
+{id:3,n:'Anggun Rias Studio',cat:'kecantikan',loc:'Purwakarta',r:4.9,rv:210,d:'Rias pengantin dan wisuda dengan hasil natural.'},
+{id:4,n:'Kilau Nail & Hair',cat:'kecantikan',loc:'Campaka',r:4.5,rv:67,d:'Nail art, hairdo, dan perawatan rambut.'},
+{id:5,n:'Dapur Ibu Rani',cat:'katering',loc:'Purwakarta',r:4.7,rv:152,d:'Masakan rumahan untuk snack box dan acara keluarga.'},
+{id:6,n:'Rasa Nusantara Catering',cat:'katering',loc:'Jatiluhur',r:4.6,rv:98,d:'Katering pernikahan dan acara besar dengan menu khas.'},
+{id:7,n:'Cerdas Les Privat',cat:'edukasi',loc:'Purwakarta',r:4.8,rv:73,d:'Guru privat SD sampai SMA, datang ke rumah.'},
+{id:8,n:'Nada Bahasa Course',cat:'edukasi',loc:'Sukatani',r:4.4,rv:58,d:'Kelas bahasa asing dan musik dengan kelompok kecil.'},
+{id:9,n:'Bengkel Sinar Motor',cat:'otomotif',loc:'Plered',r:4.5,rv:119,d:'Servis motor dan mobil berkala dengan harga jelas.'},
+{id:10,n:'Kinclong Detailing',cat:'otomotif',loc:'Purwakarta',r:4.7,rv:91,d:'Detailing, poles, dan cuci kendaraan premium.'},
+{id:11,n:'Lensa Rasa Visual',cat:'kreatif',loc:'Purwakarta',r:4.9,rv:134,d:'Foto dan video untuk pernikahan, produk, dan acara.'},
+{id:12,n:'Karya Grafika Studio',cat:'kreatif',loc:'Wanayasa',r:4.6,rv:62,d:'Desain logo, kemasan, dan materi promosi UMKM.'}];
+const SV0=[
+['Cleaning Rumah Harian',1,150000,'Pembersihan menyeluruh ruang tamu, kamar, dapur, dan kamar mandi.'],
+['Deep Cleaning Pindahan',1,450000,'Pembersihan mendalam sebelum atau sesudah pindah rumah.'],
+['Servis & Cuci AC',2,85000,'Cuci unit indoor dan outdoor, cek freon, garansi 7 hari.'],
+['Perbaikan Listrik & Plumbing',2,100000,'Perbaikan korsleting, saklar, kran bocor, dan saluran mampet.'],
+['Makeup Wisuda',3,350000,'Rias natural tahan lama, termasuk hairdo sederhana.'],
+['Makeup Pengantin',3,2500000,'Paket rias akad dan resepsi lengkap dengan touch up.'],
+['Nail Art Custom',4,120000,'Desain kuku sesuai referensi dengan bahan aman.'],
+['Hairdo Pesta',4,150000,'Tata rambut untuk pesta, kondangan, dan foto.'],
+['Snack Box Rapat',5,18000,'Isi 4 jenis kudapan, minimal pemesanan 20 box.'],
+['Nasi Box Acara',5,25000,'Nasi dengan lauk pilihan, minimal 25 box.'],
+['Katering Pernikahan 200 Porsi',6,12000000,'Menu prasmanan lengkap, dekorasi meja, dan petugas saji.'],
+['Private Chef di Rumah',6,650000,'Chef datang ke rumah untuk makan malam spesial 6 orang.'],
+['Les Privat Matematika SMP',7,90000,'Pertemuan 90 menit di rumah, materi sesuai kurikulum.'],
+['Bimbingan Masuk PTN',7,150000,'Latihan soal UTBK dengan mentor berpengalaman.'],
+['Kelas Bahasa Inggris',8,75000,'Kelas percakapan kelompok maksimal 6 orang.'],
+['Les Gitar Pemula',8,80000,'Belajar kunci dasar sampai memainkan lagu pertama.'],
+['Servis Motor Berkala',9,65000,'Ganti oli, cek rem, rantai, dan kelistrikan.'],
+['Cuci Mobil + Poles',10,120000,'Cuci, vakum interior, dan poles bodi.'],
+['Paket Foto Wisuda',11,500000,'2 jam sesi foto, 30 foto edit, file digital.'],
+['Desain Logo UMKM',12,350000,'3 konsep logo, 2 kali revisi, file siap cetak.']
+].map((x,i)=>({id:String(i+1),n:x[0],co:x[1],p:x[2],d:x[3]}));
+const REV=[['Rina','Pelayanan ramah dan hasilnya sesuai harapan.'],['Dedi','Tepat waktu, harga sesuai yang tertera.'],['Sari','Komunikasinya enak, akan pesan lagi.'],['Budi','Cukup bagus, hanya sedikit terlambat datang.'],['Maya','Hasil rapi dan profesional.']];
+const STAT=['Menunggu Konfirmasi','Dikonfirmasi','Sedang Diproses','Selesai','Dibatalkan'];
+/* ===== STATE ===== */
+let users=ls.get('ka_users',[]),me=ls.get('ka_me',null),favs=ls.get('ka_favs',[]),books=ls.get('ka_books',[]),mySv=ls.get('ka_svc',[]),myCo=ls.get('ka_co',[]),notifs=ls.get('ka_notif',[]);
+let F={q:'',cat:'',loc:'',price:'',rate:'',sort:''};
+const allSv=()=>SV0.concat(mySv),allCo=()=>CO.concat(myCo);
+const co=id=>allCo().find(c=>c.id==id)||{n:'-',cat:'rumah',loc:'-',r:0,rv:0,d:''};
+const cat=id=>CATS.find(c=>c.id===id)||CATS[0];
+const sv=id=>allSv().find(s=>s.id==id);
+const save=()=>{ls.set('ka_users',users);ls.set('ka_me',me);ls.set('ka_favs',favs);ls.set('ka_books',books);ls.set('ka_svc',mySv);ls.set('ka_co',myCo);ls.set('ka_notif',notifs)};
+/* ===== UI HELPERS ===== */
+function toast(m,bad){const t=document.createElement('div');t.className='toast'+(bad?' bad':'');t.textContent=m;$('#toasts').append(t);setTimeout(()=>t.remove(),3800)}
+function notify(m){notifs.unshift({m,t:new Date().toLocaleString('id-ID')});notifs=notifs.slice(0,20);save();toast(m)}
+function modal(h){closeModal();const o=document.createElement('div');o.className='ov';o.id='ov';o.innerHTML=`<div class="md" role="dialog" aria-modal="true">${h}</div>`;o.onclick=e=>{if(e.target===o)closeModal()};document.body.append(o);lucide.createIcons()}
+function closeModal(){const o=$('#ov');if(o)o.remove()}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+const stars=r=>`<span class="star">${ic('star')} ${r.toFixed(1)}</span>`;
+function field(id,l,t='text',x=''){return `<div><label for="${id}">${l}</label><input id="${id}" type="${t}" ${x}><div class="err" id="e_${id}"></div></div>`}
+function check(rules){let ok=true;rules.forEach(([id,fn,msg])=>{const v=$('#'+id).value.trim(),e=$('#e_'+id);const bad=!fn(v);if(e)e.textContent=bad?msg:'';if(bad)ok=false});return ok}
+const req=v=>v.length>0,mail=v=>/^\S+@\S+\.\S+$/.test(v),tel=v=>/^(\+62|0)\d{8,13}$/.test(v.replace(/[\s-]/g,''));
+function render(h){$('#app').innerHTML=h;lucide.createIcons();scrollTo(0,0)}
+function renderMenu(){
+const p=(location.hash.slice(1)||'beranda').split('-')[0];
+const l=(h,t)=>`<a href="#${h}" class="${p===h?'on':''}" onclick="$('#menu').classList.remove('open')">${t}</a>`;
+$('#menu').innerHTML=l('beranda','Beranda')+l('jelajahi','Jelajahi Jasa')+`<a href="#kategori-${CATS[0].id}" class="${p==='kategori'?'on':''}" onclick="$('#menu').classList.remove('open')">Kategori</a>`+l('tentang','Tentang Kami')+l('mitra','Jadi Mitra')+
+(me?l('pesanan','Pesanan')+l('favorit','Favorit')+(me.role==='mitra'?l('dashboard','Dashboard'):'')+l('profil',esc(me.name.split(' ')[0]))+`<button class="lnk" onclick="logout()">Keluar</button>`:
+`<button class="lnk" onclick="authModal('login')">Login</button><button class="btn sm" onclick="authModal('daftar')">Daftar</button>`);
+}
+/* ===== KOMPONEN ===== */
+function svcCard(s){const c=co(s.co),k=cat(c.cat),on=favs.includes(s.id);
+return `<article class="card"><div class="thumb" style="background:linear-gradient(135deg,${k.c},${k.c}bb)">${ic(k.i)}<button class="fav ${on?'on':''}" onclick="toggleFav('${s.id}')" aria-label="Favorit">${ic('heart')}</button></div>
+<div class="body"><span class="badge">${k.n}</span><h3>${esc(s.n)}</h3><div class="sm">${esc(c.n)}</div>
+<div class="meta"><span>${ic('map-pin')} ${esc(c.loc)}</span>${c.r?stars(c.r):'<span>Baru</span>'}</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px"><div><span class="sm">Mulai dari</span><div class="price">${rp(s.p)}</div></div><a class="btn sm navy" href="#jasa-${s.id}">Lihat Detail</a></div></div></article>`}
+function provCard(c){return `<div class="card prov"><div class="av">${esc(c.n[0])}</div><div><h3>${esc(c.n)}</h3><div class="meta"><span>${ic('map-pin')} ${esc(c.loc)}</span>${stars(c.r)}<span>${c.rv} ulasan</span></div><p class="sm" style="margin-top:6px">${esc(c.d)}</p><a class="badge" style="margin-top:8px" href="#jelajahi" onclick="F={q:'${esc(c.n).replace(/'/g,'')}',cat:'',loc:'',price:'',rate:'',sort:''}">Lihat jasa</a></div></div>`}
+function catCard(k){return `<a class="card cat" href="#kategori-${k.id}"><div class="ico" style="background:${k.c}">${ic(k.i)}</div><h3>${k.n}</h3><p>${k.d}</p><span class="badge" style="margin-top:auto">${allSv().filter(s=>co(s.co).cat===k.id).length} layanan</span></a>`}
+/* ===== HALAMAN ===== */
+function pgHome(){
+const top=[...allSv()].sort((a,b)=>co(b.co).r-co(a.co).r).slice(0,6);
+render(`<section class="hero"><div class="wrap in"><div><h1>Semua Kebutuhan Jasa, Tinggal Klik Aja!</h1>
+<p class="lead">Temukan dan pesan berbagai jasa profesional dengan mudah. Dari kebutuhan rumah hingga personal services, semuanya ada dalam satu tempat.</p>
+<form class="sbar" onsubmit="event.preventDefault();F={q:$('#hq').value,cat:'',loc:'',price:'',rate:'',sort:''};location.hash='jelajahi'"><input id="hq" placeholder="Cari jasa, kategori, atau perusahaan" aria-label="Cari jasa"><button class="btn">${ic('search')} Cari Jasa</button></form>
+<div class="chips">${CATS.map(k=>`<a class="chip" href="#kategori-${k.id}">${k.n}</a>`).join('')}</div></div>
+<div class="hv"><div>${ic('badge-check')}<span>Penyedia jasa lokal Purwakarta</span></div><div>${ic('calendar-check')}Pilih jadwal sendiri</div><div>${ic('star')}Rating dan ulasan</div></div></div></section>
+<section class="sec"><div class="wrap"><div class="hd"><div><h2>Kategori Populer</h2><p>Pilih kategori sesuai kebutuhanmu.</p></div></div><div class="grid g3">${CATS.map(catCard).join('')}</div></div></section>
+<section class="sec" style="background:#fff"><div class="wrap"><div class="note">Data perusahaan dan ulasan di situs ini adalah simulasi, bukan bisnis yang telah terverifikasi.</div><div class="hd"><div><h2>Layanan Unggulan</h2><p>Dengan rating tertinggi minggu ini.</p></div><a class="btn out" href="#jelajahi">Lihat semua</a></div><div class="grid g3">${top.map(svcCard).join('')}</div></div></section>
+<section class="sec"><div class="wrap"><div class="hd"><h2>Penyedia Jasa Rekomendasi</h2></div><div class="grid g3">${CO.filter(c=>c.r>=4.7).slice(0,6).map(provCard).join('')}</div></div></section>
+<section class="sec" style="background:#fff"><div class="wrap"><div class="hd"><h2>Cara Pakai KLIK AJA</h2></div><div class="grid g3">
+${[['Cari jasa yang kamu butuhkan','Ketik nama jasa atau pilih kategori.'],['Pilih penyedia jasa terbaik','Bandingkan harga, lokasi, rating, dan ulasan.'],['Tentukan jadwal dan pesan','Isi formulir, lalu pantau status pesananmu.']].map((s,i)=>`<div class="card step"><div class="n">${i+1}</div><h3>${s[0]}</h3><p class="sm">${s[1]}</p></div>`).join('')}</div></div></section>
+<section class="sec"><div class="wrap"><div class="cta"><h2>Punya Bisnis Jasa? Yuk, Bergabung dengan KLIK AJA!</h2><p>Perluas jangkauan bisnis dan temukan lebih banyak pelanggan bersama KLIK AJA.</p><a class="btn" href="#mitra">Daftar Jadi Mitra</a></div></div></section>`)}
+function filtered(base){
+let r=allSv().filter(s=>{const c=co(s.co),q=F.q.toLowerCase();
+return (!base||c.cat===base)&&(!F.cat||c.cat===F.cat)&&(!F.loc||c.loc===F.loc)&&(!F.price||s.p<=+F.price)&&(!F.rate||c.r>=+F.rate)&&(!q||(s.n+c.n+cat(c.cat).n).toLowerCase().includes(q))});
+if(F.sort==='lo')r.sort((a,b)=>a.p-b.p);if(F.sort==='hi')r.sort((a,b)=>b.p-a.p);if(F.sort==='rt')r.sort((a,b)=>co(b.co).r-co(a.co).r);return r}
+function results(base){const r=filtered(base);$('#res').innerHTML=r.length?`<p class="sm" style="margin-bottom:12px">${r.length} layanan ditemukan</p><div class="grid g3">${r.map(svcCard).join('')}</div>`:`<div class="empty">${ic('search-x')}<p>Tidak ada layanan yang cocok. Coba kurangi filter atau ganti kata kunci.</p><button class="btn out" style="margin-top:12px" onclick="resetF('${base||''}')">Reset filter</button></div>`;lucide.createIcons()}
+function setF(k,v,base){F[k]=v;results(base)}
+function resetF(base){F={q:'',cat:'',loc:'',price:'',rate:'',sort:''};pgExplore(base)}
+function pgExplore(base){
+const locs=[...new Set(allCo().map(c=>c.loc))].sort(),o=(v,t,cur)=>`<option value="${v}" ${cur==v?'selected':''}>${t}</option>`;
+const k=base?cat(base):null;
+render(`<section class="sec"><div class="wrap">${k?`<div class="hd"><div><h2>${k.n}</h2><p>${k.d}</p></div></div>`:`<div class="hd"><h2>Jelajahi Jasa</h2></div>`}
+<div class="filters"><div><label for="fq">Cari</label><input id="fq" value="${esc(F.q)}" placeholder="Nama jasa, kategori, perusahaan" oninput="setF('q',this.value,'${base||''}')"></div>
+${base?'':`<div><label>Kategori</label><select onchange="setF('cat',this.value)">${o('','Semua',F.cat)}${CATS.map(c=>o(c.id,c.n,F.cat)).join('')}</select></div>`}
+<div><label>Lokasi</label><select onchange="setF('loc',this.value,'${base||''}')">${o('','Semua',F.loc)}${locs.map(l=>o(l,l,F.loc)).join('')}</select></div>
+<div><label>Harga</label><select onchange="setF('price',this.value,'${base||''}')">${o('','Semua',F.price)}${o(100000,'≤ Rp100 rb',F.price)}${o(500000,'≤ Rp500 rb',F.price)}${o(2500000,'≤ Rp2,5 jt',F.price)}</select></div>
+<div><label>Rating</label><select onchange="setF('rate',this.value,'${base||''}')">${o('','Semua',F.rate)}${o(4.5,'4,5 ke atas',F.rate)}${o(4.8,'4,8 ke atas',F.rate)}</select></div>
+<div><label>Urutkan</label><select onchange="setF('sort',this.value,'${base||''}')">${o('','Relevan',F.sort)}${o('lo','Harga termurah',F.sort)}${o('hi','Harga tertinggi',F.sort)}${o('rt','Rating tertinggi',F.sort)}</select></div></div>
+<div id="res"></div></div></section>`);results(base)}
+function pgDetail(id){const s=sv(id);if(!s)return render(`<div class="empty wrap sec">Layanan tidak ditemukan. <a href="#jelajahi" class="badge">Jelajahi jasa</a></div>`);
+const c=co(s.co),k=cat(c.cat),on=favs.includes(s.id),n=+s.id||0;
+const rv=c.r?[0,1,2].map(i=>REV[(n+i)%5]):[];
+render(`<section class="sec"><div class="wrap det"><div><div class="card"><div class="thumb" style="height:240px;background:linear-gradient(135deg,${k.c},${k.c}bb)">${ic(k.i)}</div></div>
+<div class="box" style="margin-top:18px"><span class="badge">${k.n}</span><h1 style="font-size:1.8rem;margin:8px 0">${esc(s.n)}</h1><p>${esc(s.d)}</p>
+<h3 style="margin-top:22px">Ulasan ${c.r?`(simulasi)`:''}</h3>${rv.length?rv.map(r=>`<div class="rv"><b>${r[0]}</b> ${stars(4+((n+r[0].length)%2)*.5+.5>5?5:4.5+((n)%2)*.5)}<p class="sm">${r[1]}</p></div>`).join(''):'<p class="sm">Belum ada ulasan.</p>'}</div></div>
+<aside class="box" style="position:sticky;top:84px"><div class="sm">Mulai dari</div><div class="price" style="font-size:1.8rem">${rp(s.p)}</div>
+<div class="meta" style="margin:12px 0"><span>${ic('building-2')} ${esc(c.n)}</span><span>${ic('map-pin')} ${esc(c.loc)}</span>${c.r?stars(c.r)+`<span>${c.rv} ulasan</span>`:''}</div>
+<p class="sm">${ic('clock')} Tersedia Senin–Sabtu, 08.00–17.00 (contoh)</p>
+<div style="display:grid;gap:10px;margin-top:16px"><button class="btn" onclick="bookModal('${s.id}')">Pesan Sekarang</button><button class="btn out" onclick="toggleFav('${s.id}')">${ic('heart')} ${on?'Hapus dari favorit':'Tambah ke favorit'}</button></div>
+<div class="note" style="margin:16px 0 0">Data penyedia adalah simulasi dan belum terverifikasi.</div></aside></div></section>`)}
+function pgList(title,list,empty){render(`<section class="sec"><div class="wrap"><div class="hd"><h2>${title}</h2></div>${list}</div></section>`)}
+function pgFav(){const l=allSv().filter(s=>favs.includes(s.id));pgList('Layanan Favorit',l.length?`<div class="grid g3">${l.map(svcCard).join('')}</div>`:`<div class="empty">${ic('heart')}<p>Belum ada favorit. Ketuk ikon hati pada layanan untuk menyimpannya.</p><a class="btn" style="margin-top:12px" href="#jelajahi">Jelajahi jasa</a></div>`)}
+function pgBook(){if(!me)return needLogin();const l=books.filter(b=>b.uid===me.email);
+pgList('Pesanan Saya',l.length?`<div class="box tw"><table><tr><th>Layanan</th><th>Penyedia</th><th>Jadwal</th><th>Biaya</th><th>Status</th><th></th></tr>${l.map(b=>`<tr><td>${esc(b.sn)}</td><td>${esc(b.cn)}</td><td>${esc(b.date)} ${esc(b.time)}</td><td>${rp(b.price)}</td><td><span class="badge st${b.st}">${STAT[b.st]}</span></td><td>${b.st<2?`<button class="btn red sm" onclick="setSt('${b.id}',4)">Batalkan</button>`:''}</td></tr>`).join('')}</table></div>`:`<div class="empty">${ic('calendar')}<p>Kamu belum punya pesanan.</p><a class="btn" style="margin-top:12px" href="#jelajahi">Cari jasa</a></div>`)}
+function pgAbout(){render(`<section class="sec"><div class="wrap" style="max-width:760px"><h1 style="font-size:2.2rem">Tentang KLIK AJA</h1>
+<p style="margin:16px 0">KLIK AJA adalah marketplace jasa yang mempertemukan pelanggan dengan penyedia jasa profesional di Purwakarta dan sekitarnya, dari layanan rumah, kecantikan, katering, pendidikan, otomotif, sampai kreatif.</p>
+<div class="grid" style="gap:12px;margin-top:20px">${[['Mudah','Satu tempat untuk mencari, membandingkan, dan memesan jasa.'],['Transparan','Harga, lokasi, rating, dan ulasan terlihat sebelum memesan.'],['Membantu usaha lokal','Penyedia jasa kecil mendapat tempat untuk dikenal pelanggan baru.']].map(a=>`<div class="box"><h3>${a[0]}</h3><p class="sm">${a[1]}</p></div>`).join('')}</div>
+<div class="note" style="margin-top:20px">Versi demonstrasi: seluruh data disimpan di browser (localStorage), belum terhubung ke Supabase atau server mana pun.</div></div></section>`)}
+function needLogin(){render(`<div class="empty wrap sec"><p>Silakan login terlebih dahulu.</p><button class="btn" style="margin-top:12px" onclick="authModal('login')">Login</button></div>`)}
+function pgProfile(){if(!me)return needLogin();
+render(`<section class="sec"><div class="wrap" style="max-width:720px"><div class="hd"><h2>Profil Akun</h2></div><div class="box"><form class="form" onsubmit="event.preventDefault();saveProfile()">
+${field('pn','Nama lengkap','text',`value="${esc(me.name)}"`)}${field('pt','Nomor telepon','tel',`value="${esc(me.phone||'')}" placeholder="08xxxxxxxxxx"`)}
+<p class="sm">Email: ${esc(me.email)} · Jenis akun: ${me.role==='mitra'?'Penyedia jasa':'Pelanggan'}</p><button class="btn">Simpan perubahan</button></form></div>
+<div class="box" style="margin-top:18px"><h3>Notifikasi</h3>${notifs.length?notifs.map(n=>`<div class="rv"><div>${esc(n.m)}</div><div class="sm">${n.t}</div></div>`).join(''):'<p class="sm">Belum ada notifikasi.</p>'}</div></div></section>`)}
+function saveProfile(){if(!check([['pn',req,'Nama wajib diisi.'],['pt',v=>!v||tel(v),'Nomor telepon tidak valid.']]))return;
+me.name=$('#pn').value.trim();me.phone=$('#pt').value.trim();const u=users.find(x=>x.email===me.email);if(u)Object.assign(u,{name:me.name,phone:me.phone});save();renderMenu();notify('Profil berhasil disimpan.')}
+/* ===== MITRA ===== */
+function pgMitra(){if(!me)return render(`<section class="sec"><div class="wrap" style="max-width:620px"><div class="box empty"><h2>Jadi Mitra KLIK AJA</h2><p style="margin:10px 0">Buat akun penyedia jasa terlebih dahulu untuk mendaftarkan usahamu.</p><button class="btn" onclick="authModal('daftar','mitra')">Daftar sebagai mitra</button></div></div></section>`);
+if(me.role==='mitra'&&me.co)return location.hash='dashboard';
+render(`<section class="sec"><div class="wrap" style="max-width:680px"><div class="hd"><h2>Daftar Jadi Mitra</h2></div><div class="box"><form class="form" onsubmit="event.preventDefault();regMitra()">
+<div class="f2">${field('mo','Nama pemilik','text',`value="${esc(me.name)}"`)}${field('mc','Nama perusahaan')}</div>
+<div class="f2">${field('me','Email','email',`value="${esc(me.email)}"`)}${field('mp','Nomor telepon','tel',`value="${esc(me.phone||'')}"`)}</div>
+<div><label for="mk">Kategori jasa</label><select id="mk">${CATS.map(k=>`<option value="${k.id}">${k.n}</option>`).join('')}</select></div>
+${field('ma','Alamat / kota')}<div><label for="md">Deskripsi bisnis</label><textarea id="md" rows="3"></textarea><div class="err" id="e_md"></div></div>
+<div><label for="ml">Logo perusahaan</label><input id="ml" type="file" accept="image/*"><p class="sm">Opsional. Pada versi demo, logo belum disimpan (butuh Supabase Storage).</p></div>
+<button class="btn">Daftarkan usaha</button></form></div></div></section>`)}
+function regMitra(){if(!check([['mo',req,'Nama pemilik wajib diisi.'],['mc',req,'Nama perusahaan wajib diisi.'],['me',mail,'Email tidak valid.'],['mp',tel,'Nomor telepon tidak valid.'],['ma',req,'Alamat wajib diisi.'],['md',v=>v.length>=10,'Deskripsi minimal 10 karakter.']]))return;
+const c={id:'m'+Date.now(),n:$('#mc').value.trim(),cat:$('#mk').value,loc:$('#ma').value.trim(),r:0,rv:0,d:$('#md').value.trim(),owner:me.email};
+myCo.push(c);me.role='mitra';me.co=c.id;const u=users.find(x=>x.email===me.email);if(u){u.role='mitra';u.co=c.id}save();renderMenu();notify('Usaha berhasil didaftarkan. Selamat datang, mitra!');location.hash='dashboard'}
+function pgDash(){if(!me||me.role!=='mitra'||!me.co){toast('Halaman ini khusus penyedia jasa.',1);return location.hash='mitra'}
+const c=co(me.co),ms=allSv().filter(s=>s.co==me.co),bs=books.filter(b=>b.cid==me.co);
+render(`<section class="sec"><div class="wrap"><div class="hd"><div><h2>Dashboard ${esc(c.n)}</h2><p>${esc(cat(c.cat).n)} · ${esc(c.loc)}</p></div><button class="btn" onclick="svcModal()">${ic('plus')} Tambah layanan</button></div>
+<div class="stats"><div class="box"><b>${ms.length}</b>Layanan aktif</div><div class="box"><b>${bs.length}</b>Total pemesanan</div><div class="box"><b>${bs.filter(b=>b.st===0).length}</b>Menunggu konfirmasi</div></div>
+<div class="box tw" style="margin-bottom:20px"><h3 style="margin-bottom:8px">Layanan saya</h3>${ms.length?`<table><tr><th>Nama</th><th>Harga</th><th></th></tr>${ms.map(s=>`<tr><td>${esc(s.n)}</td><td>${rp(s.p)}</td><td><button class="btn out sm" onclick="svcModal('${s.id}')">Edit</button> <button class="btn red sm" onclick="delSvc('${s.id}')">Hapus</button></td></tr>`).join('')}</table>`:'<p class="sm">Belum ada layanan. Tambahkan layanan pertamamu.</p>'}</div>
+<div class="box tw" style="margin-bottom:20px"><h3 style="margin-bottom:8px">Pesanan terbaru</h3>${bs.length?`<table><tr><th>Pelanggan</th><th>Layanan</th><th>Jadwal</th><th>Status</th></tr>${bs.map(b=>`<tr><td>${esc(b.cname)}<div class="sm">${esc(b.phone)}</div></td><td>${esc(b.sn)}</td><td>${esc(b.date)} ${esc(b.time)}</td><td><select onchange="setSt('${b.id}',+this.value)">${STAT.map((t,i)=>`<option value="${i}" ${b.st===i?'selected':''}>${t}</option>`).join('')}</select></td></tr>`).join('')}</table>`:'<p class="sm">Belum ada pesanan masuk.</p>'}</div>
+<div class="box"><h3 style="margin-bottom:10px">Profil perusahaan</h3><form class="form" onsubmit="event.preventDefault();saveCo()">${field('cn','Nama perusahaan','text',`value="${esc(c.n)}"`)}${field('cl','Lokasi','text',`value="${esc(c.loc)}"`)}<div><label for="cd">Deskripsi</label><textarea id="cd" rows="3">${esc(c.d)}</textarea></div><button class="btn">Simpan profil</button></form></div></div></section>`)}
+function saveCo(){if(!check([['cn',req,'Nama wajib diisi.'],['cl',req,'Lokasi wajib diisi.']]))return;const c=myCo.find(x=>x.id==me.co);c.n=$('#cn').value.trim();c.loc=$('#cl').value.trim();c.d=$('#cd').value.trim();save();notify('Profil perusahaan disimpan.');pgDash()}
+function svcModal(id){const s=id?sv(id):{n:'',p:'',d:''};
+modal(`<h2 style="margin-bottom:14px">${id?'Edit':'Tambah'} layanan</h2><form class="form" onsubmit="event.preventDefault();saveSvc('${id||''}')">${field('sn','Nama layanan','text',`value="${esc(s.n)}"`)}${field('sp','Harga mulai dari (Rp)','number',`min="1000" value="${s.p}"`)}<div><label for="sd">Deskripsi</label><textarea id="sd" rows="3">${esc(s.d)}</textarea><div class="err" id="e_sd"></div></div><div style="display:flex;gap:8px"><button class="btn">Simpan</button><button type="button" class="btn out" onclick="closeModal()">Batal</button></div></form>`)}
+function saveSvc(id){if(!check([['sn',req,'Nama wajib diisi.'],['sp',v=>+v>=1000,'Harga minimal Rp1.000.'],['sd',req,'Deskripsi wajib diisi.']]))return;
+const o={n:$('#sn').value.trim(),p:+$('#sp').value,d:$('#sd').value.trim()};
+if(id){Object.assign(mySv.find(x=>x.id===id),o)}else mySv.push({id:'c'+Date.now(),co:me.co,...o});
+save();closeModal();notify(id?'Layanan diperbarui.':'Layanan ditambahkan.');pgDash()}
+function delSvc(id){if(!mySv.find(x=>x.id===id))return toast('Layanan contoh tidak dapat dihapus.',1);if(!confirm('Hapus layanan ini?'))return;mySv=mySv.filter(x=>x.id!==id);favs=favs.filter(f=>f!==id);save();toast('Layanan dihapus.');pgDash()}
+function setSt(id,st){const b=books.find(x=>x.id===id);if(!b)return;b.st=st;save();notify(`Status pesanan "${b.sn}" diubah menjadi ${STAT[st]}.`);route()}
+/* ===== BOOKING ===== */
+function bookModal(id){if(!me){toast('Login dulu untuk memesan.',1);return authModal('login')}
+const s=sv(id),c=co(s.co),today=new Date().toISOString().slice(0,10);
+modal(`<h2 style="margin-bottom:12px">Pesan Jasa</h2><form class="form" onsubmit="event.preventDefault();doBook('${id}')">
+${field('bn','Nama pelanggan','text',`value="${esc(me.name)}"`)}${field('bp','Nomor telepon','tel',`value="${esc(me.phone||'')}" placeholder="08xxxxxxxxxx"`)}
+<div><label>Layanan</label><input value="${esc(s.n)}" readonly></div><div><label>Penyedia jasa</label><input value="${esc(c.n)}" readonly></div>
+<div class="f2">${field('bd','Tanggal','date',`min="${today}"`)}${field('bt','Waktu','time')}</div>${field('ba','Alamat layanan')}
+<div><label for="bc">Catatan tambahan</label><textarea id="bc" rows="2"></textarea></div><div><label>Estimasi biaya</label><input value="Mulai ${rp(s.p)}" readonly></div>
+<button class="btn">Konfirmasi pesanan</button></form>`)}
+function doBook(id){if(!check([['bn',req,'Nama wajib diisi.'],['bp',tel,'Nomor telepon tidak valid.'],['bd',req,'Pilih tanggal.'],['bt',req,'Pilih waktu.'],['ba',v=>v.length>=5,'Alamat minimal 5 karakter.']]))return;
+const s=sv(id),c=co(s.co),b={id:'b'+Date.now(),uid:me.email,cid:s.co,sid:id,sn:s.n,cn:c.n,cname:$('#bn').value.trim(),phone:$('#bp').value.trim(),date:$('#bd').value,time:$('#bt').value,addr:$('#ba').value.trim(),note:$('#bc').value.trim(),price:s.p,st:0};
+books.unshift(b);save();notify(`Pemesanan "${s.n}" berhasil dibuat.`);
+modal(`<h2>Pesanan berhasil!</h2><div class="box" style="margin:14px 0;background:var(--soft);box-shadow:none"><p><b>${esc(b.sn)}</b><br>${esc(b.cn)}</p><p class="sm" style="margin-top:8px">${esc(b.date)} pukul ${esc(b.time)}<br>${esc(b.addr)}<br>Estimasi: mulai ${rp(b.price)}</p><span class="badge st0" style="margin-top:8px">${STAT[0]}</span></div><div style="display:flex;gap:8px"><a class="btn" href="#pesanan" onclick="closeModal()">Lihat pesanan</a><button class="btn out" onclick="closeModal()">Tutup</button></div>`)}
+/* ===== AUTH ===== */
+function authModal(mode,role){const d=mode==='daftar';
+modal(`<h2 style="margin-bottom:12px">${d?'Daftar Akun':'Login'}</h2><form class="form" onsubmit="event.preventDefault();doAuth('${mode}')">
+${d?field('an','Nama lengkap')+`<div><label for="ar">Jenis akun</label><select id="ar"><option value="pelanggan">Pelanggan</option><option value="mitra" ${role==='mitra'?'selected':''}>Penyedia jasa</option></select></div>`:''}
+${field('ae','Email','email')}${field('apw','Kata sandi','password')}<button class="btn">${d?'Daftar':'Login'}</button>
+<p class="sm">${d?'Sudah punya akun?':'Belum punya akun?'} <a href="#" style="color:var(--teal);font-weight:600" onclick="event.preventDefault();authModal('${d?'login':'daftar'}')">${d?'Login':'Daftar'}</a></p>
+<p class="sm">Demo: akun disimpan di browser ini saja, bukan di server.</p></form>`)}
+function doAuth(mode){const d=mode==='daftar';
+if(!check([...(d?[['an',v=>v.length>=2,'Nama minimal 2 karakter.']]:[]),['ae',mail,'Format email tidak valid.'],['apw',v=>v.length>=6,'Kata sandi minimal 6 karakter.']]))return;
+const em=$('#ae').value.trim().toLowerCase(),pw=$('#apw').value;
+if(d){if(users.find(u=>u.email===em))return toast('Email sudah terdaftar. Silakan login.',1);
+const u={name:$('#an').value.trim(),email:em,pw,role:$('#ar').value==='mitra'?'mitra':'pelanggan',phone:''};users.push(u);me=u}
+else{const u=users.find(x=>x.email===em&&x.pw===pw);if(!u)return toast('Email atau kata sandi salah.',1);me=u}
+save();closeModal();renderMenu();toast(d?'Akun berhasil dibuat. Selamat datang!':`Selamat datang kembali, ${me.name.split(' ')[0]}!`);
+if(me.role==='mitra'&&!me.co)location.hash='mitra';else route()}
+function logout(){me=null;save();renderMenu();toast('Kamu sudah keluar.');location.hash='beranda'}
+function toggleFav(id){const i=favs.indexOf(id);i<0?favs.push(id):favs.splice(i,1);save();toast(i<0?'Ditambahkan ke favorit.':'Dihapus dari favorit.');route()}
+/* ===== ROUTER ===== */
+function route(){closeModal();const h=location.hash.slice(1)||'beranda',i=h.indexOf('-'),p=i<0?h:h.slice(0,i),a=i<0?'':h.slice(i+1);renderMenu();
+const m={beranda:pgHome,jelajahi:()=>pgExplore(),kategori:()=>{F.cat='';pgExplore(CATS.some(k=>k.id===a)?a:CATS[0].id)},jasa:()=>pgDetail(a),pesanan:pgBook,favorit:pgFav,mitra:pgMitra,dashboard:pgDash,tentang:pgAbout,profil:pgProfile};
+(m[p]||pgHome)()}
+window.addEventListener('hashchange',()=>{if(!location.hash.startsWith('#kategori')&&!location.hash.startsWith('#jelajahi'))F={q:'',cat:'',loc:'',price:'',rate:'',sort:''};route()});
+$('#fcat').innerHTML=CATS.map(k=>`<a href="#kategori-${k.id}">${k.n}</a>`).join('');
+route();
+</script>
+</body>
+</html>
